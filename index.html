@@ -1,0 +1,301 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <style>
+             @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+
+*{
+
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+   
+}
+body{
+    background:rgb(189, 189, 189)
+    }
+.notices{
+    font-family: 'Poppins';
+}
+.main_container{
+    width: 250px;
+    height: 400px;
+    background: #ecf0f1;
+    border-radius:5px;
+    margin: auto;
+        margin-top: auto;
+    padding: 10px 20px;
+        padding-top: 10px;
+    padding-top: 10px;
+    padding-top: 25px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    margin-top: 50px;
+}
+h2 {
+font-size: 17px;
+padding-bottom: 25px;
+font-weight: 400;
+text-transform: uppercase;
+}
+.input_field {
+    padding: 15px 0px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    position: relative;
+}
+#input {
+    background: white;
+outline: none;
+border: none;
+border: 1px solid #ddd;
+width: 90%;
+height: 30px;
+font-family: 'Poppins';
+
+}
+#icon {
+    position: absolute;
+    right: -4px;
+    padding: ;
+    top: 22px;
+    font-family: 'Poppins';
+    cursor:pointer;
+    z-index: 999;
+}
+ #scure{
+    position: absolute;
+right: 24px;
+background: white;
+display: inline-block;
+padding: 4px 5px;
+border-left: 1px solid #c1c1c1;
+bottom: 18px;
+    }
+    .notices {
+        font-family: 'Poppins';
+font-size: 15px;
+text-transform: capitalize;
+margin-top: 46px;
+
+}
+.notices span{
+
+    padding-bottom:5px;
+}
+#progress_bar{
+   
+    height:3px;
+    
+    margin-bottom:5px;
+}
+      </style>
+        <link rel="stylesheet" type="text/css" href="all.min.css">
+    </head>
+ <body>
+   <div class="main_container">
+       <h2 style="font-family:'Poppins';">Password Checker</h2>
+       <div class="input_field"> 
+
+            <input id="input" type="password"/>
+            <span id="icon"><i  class="fas fa-eye-slash"></i></span>
+            
+         <span id="scure"><i class="fas fa-shield-alt"></i></span>
+        
+        </div>
+        <div id="progress_bar">
+
+        </div>
+        <span id="pass_strength" style="display:block;font-family: 'Poppins';margin-bottom:15px;"></span>
+     
+
+  
+   <div class="notices">
+       <div class="one-side">
+        <span id='one'style="display:block;"><i class="fas fa-times"></i> Use uppercase</span>
+        <span id='two'style="display:block;"><i class="fas fa-times"></i> Use lowercase</span>
+       </div>
+       <div class="other-side">
+
+        <span  id='three' style="display:block;"><i class="fas fa-times"></i> Use special Charecter</span>
+       <span  id='four' style="display:block;">
+        <i class="fas fa-times"></i> Use number</span>
+       </div>
+       
+
+   </div>
+
+</div>
+
+   <script src="all.min.js"></script> 
+
+
+        <script>
+                var input=document.getElementById('input');
+                var icon=document.getElementById('icon');
+                var scure=document.getElementById('scure');
+                var progress_bar=document.getElementById('progress_bar');
+                var pass_strength=document.getElementById('pass_strength');
+                var one=document.getElementById('one');
+                var two=document.getElementById('two');
+                var three=document.getElementById('three');
+                var four=document.getElementById('four');
+
+              
+
+                input.addEventListener('keyup',()=>{
+                    var value=input.value;
+                    // if(value.length<=5){
+                    //         progress_bar.style.width="25%";
+                    //         progress_bar.style.backgroundColor="#e74c3c";
+                    //         pass_strength.innerHTML=`<span style="color:#e74c3c;">So Week</span>`;
+                    //     }
+
+                    if(value.match(/\d/)){
+
+                            four.style.color="#2ecc71";
+                           four.childNodes[1].classList.remove('fa-times');
+                           four.childNodes[1].classList.add('fa-check');
+
+
+                    }else{
+                        four.style.color="black";
+                           four.childNodes[1].classList.add('fa-times');
+                           four.childNodes[1].classList.remove('fa-check');
+
+                    }
+
+                    if(value.match(/[a-z]/)){
+
+                        two.style.color="#2ecc71";
+                        two.childNodes[0].classList.remove('fa-times');
+                        two.childNodes[0].classList.add('fa-check');
+
+
+                        }else{
+                        two.style.color="black";
+                        two.childNodes[0].classList.add('fa-times');
+                        two.childNodes[0].classList.remove('fa-check');
+
+                        }
+                        if(value.match(/[A-Z]/)){
+
+                        one.style.color="#2ecc71";
+                        one.childNodes[0].classList.remove('fa-times');
+                        one.childNodes[0].classList.add('fa-check');
+
+
+                        }else{
+                        one.style.color="black";
+                        one.childNodes[0].classList.add('fa-times');
+                        one.childNodes[0].classList.remove('fa-check');
+
+                        }
+
+                        if(value.match(/\W/)){
+
+                        three.style.color="#2ecc71";
+                        three.childNodes[0].classList.remove('fa-times');
+                        three.childNodes[0].classList.add('fa-check');
+
+
+                        }else{
+                        three.style.color="black";
+                        three.childNodes[0].classList.add('fa-times');
+                        three.childNodes[0].classList.remove('fa-check');
+
+                        }
+                          
+
+                       
+                        if(value.match(/\d/)&&value.match(/\W/)&&value.match(/[A-Z]/)&&value.match(/[a-z]/)){
+                            progress_bar.style.width="100%";
+                            progress_bar.style.backgroundColor="#2ecc71";
+                            pass_strength.innerHTML=`<span style="color:#2ecc71;">Very Strong </span>`;
+
+                        }else if(value.match(/[A-Z]/) && value.match(/[a-z]/)&&value.match(/\d/)){
+                            progress_bar.style.width="75%";
+                            progress_bar.style.backgroundColor="#27ae60";
+                            pass_strength.innerHTML=`<span style="color:#27ae60;">Good</span>`;
+
+                        }
+                        else if(value.match(/[A-Z]/) && value.match(/[a-z]/)&&value.match(/\d/)){
+                            progress_bar.style.width="50%";
+                            progress_bar.style.backgroundColor="#e67e22";
+                            pass_strength.innerHTML=`<span style="color:#e67e22;">Medium</span>`;
+
+                        }else if(value.match(/\d/)&&value.match(/[a-z]/)){
+                            progress_bar.style.width="50%";
+                            progress_bar.style.backgroundColor="#e67e22";
+                            pass_strength.innerHTML=`<span style="color:#e74c3c;">Medium</span>`;
+                        }
+                        
+                        else if(value.match(/\d/)||value.match(/\W/)||value.match(/[A-Z]/)||value.match(/[a-z]/)){
+                            progress_bar.style.width="25%";
+                            progress_bar.style.backgroundColor="#e74c3c";
+                            pass_strength.innerHTML=`<span style="color:#e74c3c;">So Week</span>`;
+                        }  
+                       else {
+                            pass_strength.innerHTML='';
+                            progress_bar.style.width="0%";
+                            
+                        }
+
+                          
+                 
+                        
+                            if( pass_strength.innerText=='Very Strong'){
+
+                                scure.style.color='#2ecc71';
+                            }else if(pass_strength.innerText=='Good'){
+                                scure.style.color='#27ae60';
+                            }else if(pass_strength.innerText=='Medium'){
+                                scure.style.color='#e67e22';
+                            }else if(pass_strength.innerText=='So Week'){
+                                scure.style.color='#e74c3c';
+                            }else{
+                                scure.style.color='black';
+                            }
+
+                });
+                    var newArry=['fa-eye','fa-eye-slash'];
+                   
+                    var count=0;
+                  
+                icon.addEventListener("click", ()=>{
+                    var b=count++;
+                       if(b>=newArry.length-1){
+                        count=0;
+                        icon.childNodes[0].classList.add(newArry[b]);
+                       }else{
+                        icon.childNodes[0].classList.add(newArry[b]);
+                       }
+                        //icon.childNodes[0].classList.add(newArry[b]);
+                    
+
+                });
+                
+                var secondArry=['text','password'];
+                var a=0;
+                icon.addEventListener("click", ()=>{
+                    var new_arry=a++;
+                    if(new_arry>=secondArry.length-1){
+                        a=0;
+                        input.setAttribute('type',secondArry[new_arry]);
+                    } else{
+                        input.setAttribute('type',secondArry[new_arry]);
+
+                    }
+                    
+
+
+                });
+               
+
+
+        </script>
+    </body>
+
+</html>
